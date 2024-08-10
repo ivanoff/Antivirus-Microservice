@@ -1,7 +1,7 @@
 {
   "name": "antivirus-microservice",
   "description": "Antivirus Microsevice",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": "Dimitry Ivanov <2@ivanoff.org.ua> # curl -A cv ivanoff.org.ua",
   "license": "MIT",
   "main": "./dist/client.js",

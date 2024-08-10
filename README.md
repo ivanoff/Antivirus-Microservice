@@ -1,3 +1,5 @@
+![antivirus-microservice](./assets/logo2.png)
+
 # Antivirus Microservice
 
 This is a free and fully functional microservice for antivirus file checking using `ClamAV`. The service is written in `TypeScript` and uses `Bun` as the runtime environment.
