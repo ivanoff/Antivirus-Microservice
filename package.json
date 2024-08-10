@@ -1,11 +1,14 @@
 {
   "name": "antivirus-microservice",
   "description": "Antivirus Microsevice",
-  "version": "1.0.1",
+  "version": "2.0.1",
   "author": "Dimitry Ivanov <2@ivanoff.org.ua> # curl -A cv ivanoff.org.ua",
   "license": "MIT",
+  "main": "./dist/client.js",
+  "types": "./dist/client.d.ts",
   "scripts": {
-    "start": "bun src/server.ts"
+    "start": "bun src/server.ts",
+    "build": "bun build ./src/client.ts --outdir ./dist --target node --minify --external hono --external clamscan --external the-log --external @types/bun && tsc"
   },
   "dependencies": {
     "clamscan": "^2.3.1",
