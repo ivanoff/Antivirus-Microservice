@@ -1,0 +1,1 @@
+class t{baseUrl;constructor(e="http://localhost:3000"){this.baseUrl=e}async checkFile(e){const s=new FormData;s.append("file",e);try{const r=await fetch(this.baseUrl,{method:"POST",body:s});if(!r.ok)throw new Error(`HTTP error! status: ${r.status}`);return await r.json()}catch(r){return{ok:!1,error:"Error checking file"}}}}var i=t;export{i as default};
