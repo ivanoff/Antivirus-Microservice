@@ -1,6 +1,6 @@
 ![antivirus-microservice](./assets/logo2.png)
 
-# Antivirus Microservice
+## Antivirus Microservice
 
 This is a free and fully functional microservice for antivirus file checking using `ClamAV`. The service is written in `TypeScript` and uses `Bun` as the runtime environment.
 
@@ -12,27 +12,27 @@ This is a free and fully functional microservice for antivirus file checking usi
 - Simple `RESTful API` for file upload and scanning
 - Automatic waiting for `ClamAV` to start up
 
-# Table of Contents
+## Table of Contents
 
 - [Antivirus Microservice](#antivirus-microservice)
-  - [Features](#features)
+- [Features](#features)
 - [Table of Contents](#table-of-contents)
-  - [Antivirus Microservice Client](#antivirus-microservice-client)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [API](#api)
-    - [Notes](#notes)
-  - [Antivirus Microservice Server](#antivirus-microservice-server)
-    - [Requirements](#requirements)
-    - [Installation and Running](#installation-and-running)
-    - [Usage](#usage-1)
-      - [Scanning a File](#scanning-a-file)
-      - [Checking a File with a Virus](#checking-a-file-with-a-virus)
-    - [Notes](#notes-1)
-  - [License](#license)
-  - [Contributing](#contributing)
-  - [Support](#support)
-  - [Created by](#created-by)
+- [Antivirus Microservice Client](#antivirus-microservice-client)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [API](#api)
+  - [Notes](#notes)
+- [Antivirus Microservice Server](#antivirus-microservice-server)
+  - [Requirements](#requirements)
+  - [Installation and Running](#installation-and-running)
+  - [Usage](#usage-1)
+    - [Scanning a File](#scanning-a-file)
+    - [Checking a File with a Virus](#checking-a-file-with-a-virus)
+  - [Notes](#notes-1)
+- [License](#license)
+- [Contributing](#contributing)
+- [Support](#support)
+- [Created by](#created-by)
 
 ## Antivirus Microservice Client
 
