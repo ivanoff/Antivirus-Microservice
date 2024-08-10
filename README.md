@@ -1,13 +1,13 @@
 # Antivirus Microservice
 
-This is a free and fully functional microservice for antivirus file checking using `ClamAV`. The service is written in TypeScript and uses Bun as the runtime environment.
+This is a free and fully functional microservice for antivirus file checking using `ClamAV`. The service is written in `TypeScript` and uses `Bun` as the runtime environment.
 
 ## Features
 
-- Free solution for antivirus file scanning
+- `Free` solution for `antivirus file scanning`
 - Uses the reliable and widely adopted `ClamAV` antivirus engine
-- Easy deployment with Docker
-- Simple RESTful API for file upload and scanning
+- Easy deployment with `Docker`
+- Simple `RESTful API` for file upload and scanning
 - Automatic waiting for `ClamAV` to start up
 
 ## Requirements
@@ -19,7 +19,7 @@ This is a free and fully functional microservice for antivirus file checking usi
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/antivirus-microservice.git
+   git clone https://github.com/ivanoff/antivirus-microservice.git
    cd antivirus-microservice
    ```
 
@@ -89,7 +89,9 @@ Response:
 
 ## License
 
-This project is distributed under the MIT license. See the [LICENSE](./LICENSE) file for more information.
+This project is distributed under the `MIT` license. See the [LICENSE](./LICENSE) file for more information.
+
+Please note that `ClamAV` is licensed under the Apache 2.0 license. More details can be found [here](https://github.com/bcgov/clamav/blob/master/LICENSE)
 
 ## Contributing
 
