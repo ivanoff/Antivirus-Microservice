@@ -16,16 +16,14 @@ This is a free and fully functional microservice for antivirus file checking usi
   - [Features](#features)
 - [Table of Contents](#table-of-contents)
   - [Antivirus Microservice Client](#antivirus-microservice-client)
-    - [Usage](#usage)
-  - [Antivirus Microservice Client](#antivirus-microservice-client-1)
     - [Installation](#installation)
-    - [Usage](#usage-1)
+    - [Usage](#usage)
     - [API](#api)
     - [Notes](#notes)
   - [Antivirus Microservice Server](#antivirus-microservice-server)
     - [Requirements](#requirements)
     - [Installation and Running](#installation-and-running)
-    - [Usage](#usage-2)
+    - [Usage](#usage-1)
       - [Scanning a File](#scanning-a-file)
       - [Checking a File with a Virus](#checking-a-file-with-a-virus)
     - [Notes](#notes-1)
@@ -33,13 +31,6 @@ This is a free and fully functional microservice for antivirus file checking usi
   - [Contributing](#contributing)
   - [Support](#support)
   - [Created by](#created-by)
-
-## Antivirus Microservice Client
-
-See [Antivirus Microservice Server](#antivirus-microservice-server) section to set up the server.
-
-### Usage
-
 
 ## Antivirus Microservice Client
 
