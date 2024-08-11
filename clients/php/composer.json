@@ -1,0 +1,21 @@
+{
+  "name": "ivanoff/antivirus-microservice",
+  "description": "A PHP client for Antivirus Microservice",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dimitry Ivanov",
+      "email": "2@ivanoff.org.ua"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "AntivirusMicroservice\\": "src/"
+    }
+  }
+}
+
