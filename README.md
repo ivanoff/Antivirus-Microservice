@@ -167,7 +167,7 @@ The `Antivirus` class provides the following method:
 - The client works with both `File` and `Blob` objects, making it flexible for various use cases.
 - Error handling is built into the client. If there's an error communicating with the server, the `checkFile` method will return `{ ok: false, viruses: ['Error checking file'] }`.
 
-For more information on setting up and using the server, refer to the [Antivirus Microservice Server](#antivirus-microservice-server) documentation below.
+For more information on setting up and using the server, refer to the [Antivirus Microservice Server](#antivirus-microservice-server) documentation above.
 
 ## License
 
