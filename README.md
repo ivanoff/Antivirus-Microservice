@@ -17,78 +17,22 @@ This is a free and fully functional microservice for antivirus file checking usi
 - [Antivirus Microservice](#antivirus-microservice)
 - [Features](#features)
 - [Table of Contents](#table-of-contents)
-- [Antivirus Microservice Client](#antivirus-microservice-client)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [API](#api)
-  - [Notes](#notes)
 - [Antivirus Microservice Server](#antivirus-microservice-server)
   - [Requirements](#requirements)
   - [Installation and Running](#installation-and-running)
-  - [Usage](#usage-1)
+  - [Usage](#usage)
     - [Scanning a File](#scanning-a-file)
     - [Checking a File with a Virus](#checking-a-file-with-a-virus)
+  - [Notes](#notes)
+- [Antivirus Microservice Client](#antivirus-microservice-client)
+  - [Installation](#installation)
+  - [Usage](#usage-1)
+  - [API](#api)
   - [Notes](#notes-1)
 - [License](#license)
 - [Contributing](#contributing)
 - [Support](#support)
 - [Created by](#created-by)
-
-## Antivirus Microservice Client
-
-This client provides a simple interface to interact with the Antivirus Microservice. It allows you to easily scan files for viruses using the ClamAV engine.
-
-See [Antivirus Microservice Server](#antivirus-microservice-server) section to set up the server.
-
-### Installation
-
-To install the Antivirus Microservice client, use npm:
-
-```bash
-npm i -S antivirus-microservice
-```
-
-### Usage
-
-Here's a basic example of how to use the Antivirus Microservice client:
-
-```typescript
-import Antivirus from 'antivirus-microservice';
-
-// Initialize the client with the server URL
-const antivirus = new Antivirus('http://localhost:3000');
-
-// For example: Create a test file (this is the EICAR test virus file)
-const file = new File(['X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*'], 'test.txt', { type: 'text/plain' });
-
-// Check the file
-const { ok, viruses } = await antivirus.checkFile(file);
-
-// Log the result
-console.log(ok? 'File is clean' : `File is infected: ${viruses}`);
-// Result> File is infected: Win.Test.EICAR_HDB-1
-```
-
-In this example, we're creating a file with the EICAR test virus signature. This is a standard test file used to verify that antivirus software is working correctly. When scanned, it should be detected as a virus.
-
-### API
-
-The `Antivirus` class provides the following method:
-
-- `checkFile(file: File | Blob): Promise<{ ok: boolean, viruses?: string[], error?: string }>`
-  
-  Scans the provided file for viruses. Returns a promise that resolves to an object with:
-  - `ok`: boolean indicating whether the file is clean (`true`) or infected (`false`)
-  - `viruses`: an array of detected virus names (only present if `ok` is `false`)
-  - `error`: a string with error (only present if `ok` is `false`)
-
-### Notes
-
-- Make sure the Antivirus Microservice server is running and accessible at the URL you provide when initializing the `Antivirus` client.
-- The client works with both `File` and `Blob` objects, making it flexible for various use cases.
-- Error handling is built into the client. If there's an error communicating with the server, the `checkFile` method will return `{ ok: false, viruses: ['Error checking file'] }`.
-
-For more information on setting up and using the server, refer to the [Antivirus Microservice Server](#antivirus-microservice-server) documentation below.
 
 ## Antivirus Microservice Server
 
@@ -168,6 +112,62 @@ Response:
 
 - The service automatically deletes scanned files after scanning.
 - In case of an error during file upload or scanning, the service will return an appropriate error message.
+
+## Antivirus Microservice Client
+
+This client provides a simple interface to interact with the Antivirus Microservice. It allows you to easily scan files for viruses using the ClamAV engine.
+
+See [Antivirus Microservice Server](#antivirus-microservice-server) section to set up the server.
+
+### Installation
+
+To install the Antivirus Microservice client, use npm:
+
+```bash
+npm i -S antivirus-microservice
+```
+
+### Usage
+
+Here's a basic example of how to use the Antivirus Microservice client:
+
+```typescript
+import Antivirus from 'antivirus-microservice';
+
+// Initialize the client with the server URL
+const antivirus = new Antivirus('http://localhost:3000');
+
+// For example: Create a test file (this is the EICAR test virus file)
+const file = new File(['X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*'], 'test.txt', { type: 'text/plain' });
+
+// Check the file
+const { ok, viruses } = await antivirus.checkFile(file);
+
+// Log the result
+console.log(ok? 'File is clean' : `File is infected: ${viruses}`);
+// Result> File is infected: Win.Test.EICAR_HDB-1
+```
+
+In this example, we're creating a file with the EICAR test virus signature. This is a standard test file used to verify that antivirus software is working correctly. When scanned, it should be detected as a virus.
+
+### API
+
+The `Antivirus` class provides the following method:
+
+- `checkFile(file: File | Blob): Promise<{ ok: boolean, viruses?: string[], error?: string }>`
+  
+  Scans the provided file for viruses. Returns a promise that resolves to an object with:
+  - `ok`: boolean indicating whether the file is clean (`true`) or infected (`false`)
+  - `viruses`: an array of detected virus names (only present if `ok` is `false`)
+  - `error`: a string with error (only present if `ok` is `false`)
+
+### Notes
+
+- Make sure the Antivirus Microservice server is running and accessible at the URL you provide when initializing the `Antivirus` client.
+- The client works with both `File` and `Blob` objects, making it flexible for various use cases.
+- Error handling is built into the client. If there's an error communicating with the server, the `checkFile` method will return `{ ok: false, viruses: ['Error checking file'] }`.
+
+For more information on setting up and using the server, refer to the [Antivirus Microservice Server](#antivirus-microservice-server) documentation below.
 
 ## License
 
