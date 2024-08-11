@@ -1,10 +1,10 @@
 import 'the-log';
 import { Hono } from 'hono';
+import { cors } from 'hono/cors'
 import NodeClam from 'clamscan';
 import { unlink } from "node:fs/promises";
 import path from 'path';
 
-const app = new Hono();
 const port = process.env.PORT || 3000;
 
 let clam;
@@ -36,6 +36,9 @@ const checkFile = async (file) => {
 
   return isInfected ? { ...notOk, viruses } : ok;
 }
+
+const app = new Hono();
+app.use('/', cors())
 
 app.post('/', async (c) => {
   let result;

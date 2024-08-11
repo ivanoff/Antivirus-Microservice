@@ -28,24 +28,24 @@
         #dropZone {
             background-color: #e8e8e8;
             border: 4px dashed #aac;
-            border-radius: 5px;
-            padding: 25px;
-            color: #666;
-            margin: 20px 0;
+            border-radius: 10px;
+            padding: 3em 5em 3em 5em;
+            color: #225;
+            font-size: 1em;
+            margin: 30px 0;
             cursor: pointer;
         }
-        #checkButton {
-            background-color: #4CAF50;
+        .result-area {
             color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 20px 0;
+            padding: 10px;
+            margin: 20px;
+            font-size: 1em;
+            display: none;
         }
-        #checkButton:hover {
-            background-color: #45a049;
+        .info {
+            padding-top: 20px;
+            margin: 0;
+            font-size: 0.8em;
         }
         #logoButtons {
             display: flex;
@@ -61,11 +61,11 @@
             cursor: pointer;
             border-radius: 5px;
             transition: transform 0.2s;
+            width: 100px;
         }
         .logo-button img {
             height: 30px;
             vertical-align: middle;
-            margin-right: 10px;
         }
         .logo-button:hover {
             transform: scale(1.1);
@@ -75,33 +75,39 @@
 <body>
     <div class="container">
         <img width="100" height="100" src="https://github.com/ivanoff/Antivirus-Microservice/blob/master/assets/logo2.png?raw=true" />
+
         <h1>Antivirus Microservice</h1>
         
         <div id="dropZone">
-            <p><b>Drop file here or click to upload</b></p>
+            <p><b>Drop file here or click to upload<sup>*</sup></b></p>
             <input type="file" name="file" id="fileInput" style="display: none;">
         </div>
-        
-        <button id="checkButton">Check file for viruses</button>
+
+        <div id="resultDiv" class="result-area"></div>
         
         <div class="logo-buttons">
-            <button class="logo-button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo">Node.js
+            <button class="logo-button" onclick="window.location.href='https://www.npmjs.com/package/antivirus-microservice#antivirus-microservice-client'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Client" />
             </button>
-            <button class="logo-button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP Logo">PHP
+            <button class="logo-button" onclick="window.location.href='https://packagist.org/packages/ivanoff/antivirus-microservice'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP Client" />
             </button>
-            <button class="logo-button">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">Python
+            <button class="logo-button" onclick="window.location.href='https://pypi.org/project/antivirus-microservice/'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Client" />
             </button>
+        </div>        
+
+        <div class="info">
+            <sup>*</sup> demo version of <a href="https://github.com/ivanoff/Antivirus-Microservice">Antivirus-Microservice</a>
         </div>
-        </div>
+    </div>
+
 
     <script>
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
         const checkButton = document.getElementById('checkButton');
-        let file;
+        const resultDiv = document.getElementById("resultDiv");
 
         dropZone.onclick = () => fileInput.click();
 
@@ -127,34 +133,27 @@
         };
 
         function handleFiles(files) {
-            console.log('Files uploaded:', files);
-            dropZone.textContent = `Selected file: ${files[0].name}`;
-            file = files[0];
-        }
-
-        checkButton.onclick = () => {
-            if (!file) {
-                alert('Please select a file first.');
-                return;
-            }
+            resultDiv.style.display = "none";
 
             const formData = new FormData();
-            formData.append('file', file);
+            formData.append('file', files[0]);
 
             fetch('http://localhost:3000', {
                 method: 'POST',
                 body: formData,
             })
             .then(response => response.json())
-            .then(data => {
-                alert('File checked successfully!');
-                console.log(data);
+            .then(({ ok, viruses }) => {
+                resultDiv.style.display = "block";
+                const v = ok ? 'checked: OK' : `infected: ${viruses.join(', ')}`;
+                resultDiv.textContent = `${files[0].name} ${v}`;
+                resultDiv.style['background-color'] = ok ? "green" : "red";
             })
             .catch(error => {
-                alert('An error occurred while checking the file.');
-                console.error(error);
+                resultDiv.textContent = error;
+                resultDiv.style['background-color'] = "red";
             });
-        };
+        }
     </script>
 </body>
 </html>
