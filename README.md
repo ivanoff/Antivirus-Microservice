@@ -4,17 +4,23 @@
 
 This is a free and fully functional microservice for antivirus file checking using `ClamAV`. The service is written in `TypeScript` and uses `Bun` as the runtime environment.
 
+## [DEMO](https://antivirus.simpleness.org)
+
+- with default maximum file upload size is 32Kb
+
 ## Features
 
 - `Free` solution for `antivirus file scanning`
 - Uses the reliable and widely adopted `ClamAV` antivirus engine
 - Easy deployment with `Docker`
+- There are clients available for [Node.js](https://www.npmjs.com/package/antivirus-microservice#antivirus-microservice-client), [PHP](https://packagist.org/packages/ivanoff/antivirus-microservice), and [Python](https://pypi.org/project/antivirus-microservice).
 - Simple `RESTful API` for file upload and scanning
 - Automatic waiting for `ClamAV` to start up
 
 ## Table of Contents
 
 - [Antivirus Microservice](#antivirus-microservice)
+- [DEMO](#demo)
 - [Features](#features)
 - [Table of Contents](#table-of-contents)
 - [Antivirus Microservice Server](#antivirus-microservice-server)
@@ -29,6 +35,7 @@ This is a free and fully functional microservice for antivirus file checking usi
   - [Usage](#usage-1)
   - [API](#api)
   - [Notes](#notes-1)
+- [Nginx configuration](#nginx-configuration)
 - [License](#license)
 - [Contributing](#contributing)
 - [Support](#support)
@@ -168,6 +175,39 @@ The `Antivirus` class provides the following method:
 - Error handling is built into the client. If there's an error communicating with the server, the `checkFile` method will return `{ ok: false, viruses: ['Error checking file'] }`.
 
 For more information on setting up and using the server, refer to the [Antivirus Microservice Server](#antivirus-microservice-server) documentation above.
+
+## Nginx configuration
+
+Here is the Nginx configuration with a 200MB file size limit set as an example:
+
+```nginx
+server {
+    listen       80;
+    server_name  antivirus.your-domain.com;
+
+    root /path/to/antivirus-microservice/www;
+    index index.html;
+
+    error_log /var/log/nginx/antivirus.your-domain.com.error.log;
+    access_log /var/log/nginx/antivirus.your-domain.com.access.log;
+
+    location / {
+    }
+
+    location /check {
+        rewrite ^/check /$1 break;
+        resolver 127.0.0.1;
+        proxy_pass http://antivirus-server:3000;
+        proxy_set_header X-Real-IP       $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host            $host;
+        proxy_connect_timeout 120;
+        proxy_send_timeout    120;
+        proxy_read_timeout    180;
+        client_max_body_size  200M;
+    }
+}
+```
 
 ## License
 

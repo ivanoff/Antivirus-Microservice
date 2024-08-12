@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antivirus Microservice</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://antivirus.simpleness.org/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://antivirus.simpleness.org/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://antivirus.simpleness.org/favicon-16x16.png" />
+
     <style>
         body, html {
             height: 100%;
@@ -74,12 +79,12 @@
 </head>
 <body>
     <div class="container">
-        <img width="100" height="100" src="https://github.com/ivanoff/Antivirus-Microservice/blob/master/assets/logo2.png?raw=true" />
+        <img width="100" height="100" src="https://antivirus.simpleness.org/images/logo.png" />
 
-        <h1>Antivirus Microservice</h1>
+        <h1>Antivirus Microservice<sup>*</sup></h1>
         
         <div id="dropZone">
-            <p><b>Drop file here or click to upload<sup>*</sup></b></p>
+            <p><b>Drag & Drop files here or click to upload<sup>**</sup></b></p>
             <input type="file" name="file" id="fileInput" style="display: none;">
         </div>
 
@@ -87,18 +92,19 @@
         
         <div class="logo-buttons">
             <button class="logo-button" onclick="window.location.href='https://www.npmjs.com/package/antivirus-microservice#antivirus-microservice-client'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Client" />
+                <img src="https://antivirus.simpleness.org/images/node.png" alt="Node.js Client" />
             </button>
             <button class="logo-button" onclick="window.location.href='https://packagist.org/packages/ivanoff/antivirus-microservice'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP Client" />
+                <img src="https://antivirus.simpleness.org/images/php.png" alt="PHP Client" />
             </button>
             <button class="logo-button" onclick="window.location.href='https://pypi.org/project/antivirus-microservice/'">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Client" />
+                <img src="https://antivirus.simpleness.org/images/python.png" alt="Python Client" />
             </button>
         </div>        
 
         <div class="info">
-            <sup>*</sup> demo version of <a href="https://github.com/ivanoff/Antivirus-Microservice">Antivirus-Microservice</a>
+            <sup>*</sup> demo version of <a href="https://github.com/ivanoff/Antivirus-Microservice">Antivirus-Microservice</a>. <br />
+            <sup>**</sup> The default maximum file upload size is 32Kb.
         </div>
     </div>
 
@@ -138,7 +144,7 @@
             const formData = new FormData();
             formData.append('file', files[0]);
 
-            fetch('http://localhost:3000', {
+            fetch('https://antivirus.simpleness.org/check', {
                 method: 'POST',
                 body: formData,
             })

@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  app:
+  antivirus-server:
     build: .
     restart: unless-stopped
     ports:
@@ -9,9 +9,9 @@ services:
     volumes:
       - ./uploads:/app/uploads
     depends_on:
-      - clamav
+      - antivirus-clamav
 
-  clamav:
+  antivirus-clamav:
     image: clamav/clamav
     volumes:
       - ./uploads:/scan
