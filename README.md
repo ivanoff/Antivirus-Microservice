@@ -6,14 +6,14 @@ This is a free and fully functional microservice for antivirus file checking usi
 
 ## [DEMO](https://antivirus.simpleness.org)
 
-- with default maximum file upload size is 32Kb
+Demo with default maximum file upload size is 512Kb [here](https://antivirus.simpleness.org)
 
 ## Features
 
 - `Free` solution for `antivirus file scanning`
+- There are clients available for [Node.js](https://www.npmjs.com/package/antivirus-microservice#antivirus-microservice-client), [PHP](https://packagist.org/packages/ivanoff/antivirus-microservice), and [Python](https://pypi.org/project/antivirus-microservice).
 - Uses the reliable and widely adopted `ClamAV` antivirus engine
 - Easy deployment with `Docker`
-- There are clients available for [Node.js](https://www.npmjs.com/package/antivirus-microservice#antivirus-microservice-client), [PHP](https://packagist.org/packages/ivanoff/antivirus-microservice), and [Python](https://pypi.org/project/antivirus-microservice).
 - Simple `RESTful API` for file upload and scanning
 - Automatic waiting for `ClamAV` to start up
 
