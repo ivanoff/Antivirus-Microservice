@@ -6,7 +6,7 @@ This is a free and fully functional microservice for antivirus file checking usi
 
 ## [DEMO](https://antivirus.simpleness.org)
 
-Demo with default maximum file upload size is 512Kb [here](https://antivirus.simpleness.org)
+Demo with default maximum file upload size 512Kb is [here](https://antivirus.simpleness.org)
 
 ## Features
 
