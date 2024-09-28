@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 let clam;
 for (let i = 1; i <= 20; i++) {
   try {
-    clam = await (new NodeClam().init({ clamdscan: { host: 'clamav', port: 3310 } }));
+    clam = await (new NodeClam().init({ clamdscan: { host: 'localhost', port: 3310 } }));
     break;
   } catch {
     console.log(`Waiting for ClamAV on port 3310 (${i}/20)`);

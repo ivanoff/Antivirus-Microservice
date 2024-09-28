@@ -82,14 +82,14 @@
         <img width="100" height="100" src="https://antivirus.simpleness.org/images/logo.png" />
 
         <h1>Antivirus Microservice<sup>*</sup></h1>
-        
+
         <div id="dropZone">
             <p><b>Drag & Drop files here or click to upload<sup>**</sup></b></p>
             <input type="file" name="file" id="fileInput" style="display: none;">
         </div>
 
         <div id="resultDiv" class="result-area"></div>
-        
+
         <div class="logo-buttons">
             <button class="logo-button" onclick="window.location.href='https://www.npmjs.com/package/antivirus-microservice#antivirus-microservice-client'">
                 <img src="https://antivirus.simpleness.org/images/node.png" alt="Node.js Client" />
@@ -100,7 +100,7 @@
             <button class="logo-button" onclick="window.location.href='https://pypi.org/project/antivirus-microservice/'">
                 <img src="https://antivirus.simpleness.org/images/python.png" alt="Python Client" />
             </button>
-        </div>        
+        </div>
 
         <div class="info">
             <sup>*</sup> demo version of <a href="https://github.com/ivanoff/Antivirus-Microservice">Antivirus-Microservice</a>. <br />
@@ -149,6 +149,10 @@
                 method: 'POST',
                 body: formData,
             })
+            .then(response => {
+                if(response.status !== 200) throw response.status;
+                else return response;
+            })
             .then(response => response.json())
             .then(({ ok, viruses }) => {
                 resultDiv.style.display = "block";
@@ -157,7 +161,8 @@
                 resultDiv.style['background-color'] = ok ? "green" : "red";
             })
             .catch(error => {
-                resultDiv.textContent = error;
+                resultDiv.style.display = "block";
+                resultDiv.textContent = error === 413 ? 'File to large. This is demo version, maximum file upload size is 512Kb' : error;
                 resultDiv.style['background-color'] = "red";
             });
         }

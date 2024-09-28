@@ -2,7 +2,7 @@
 
 ## Antivirus Microservice
 
-This is a free and fully functional microservice for antivirus file checking using `ClamAV`. The service is written in `TypeScript` and uses `Bun` as the runtime environment.
+This is a **free antivirus microservice** for file scanning using `ClamAV`. The service is written in `TypeScript` and uses `Bun` as the runtime environment.
 
 ## [DEMO](https://antivirus.simpleness.org)
 
@@ -65,12 +65,6 @@ Demo with default maximum file upload size 512Kb is [here](https://antivirus.sim
    ```
    sudo docker compose up
    ```
-
-During startup, the service will attempt to connect to ClamAV every 5 seconds, outputting messages like:
-```
-[2024-08-10T11:26:40.001Z] Waiting for ClamAV on port 3310 (1/20)
-[2024-08-10T11:26:45.009Z] Waiting for ClamAV on port 3310 (2/20)
-```
 
 After successful startup, you will see the message:
 ```
@@ -204,7 +198,7 @@ server {
         proxy_connect_timeout 120;
         proxy_send_timeout    120;
         proxy_read_timeout    180;
-        client_max_body_size  200M;
+        client_max_body_size  100M;
     }
 }
 ```
